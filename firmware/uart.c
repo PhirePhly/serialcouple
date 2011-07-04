@@ -33,3 +33,34 @@ int uart_getchar (void) {
 	return -1;
 }
 
+/////////  HELPER FUNCTIONS /////////
+
+void uart_print_string (char * string) {
+	while (*string) {
+		uart_putchar(*string++);
+	}
+}
+
+void uart_print_hex (unsigned char d) {
+	char vals[] = {	'0', '1', '2', '3', '4', '5', '6', '7',
+			'8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+	uart_putchar(vals[d>>4]);
+	uart_putchar(vals[d & 0xF]);
+}
+
+void uart_print_int (int i) {
+	if (i < 0) {
+		uart_putchar('-');
+		uart_print_int(-i);
+		return;
+	}
+	if (i > 9) {
+		uart_print_int(i / 10);
+	}
+	if (i == 0) { // done!
+		uart_putchar('0');
+		return;
+	}
+	uart_putchar('0' + (i % 10));
+	return;
+}
