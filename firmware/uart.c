@@ -35,6 +35,11 @@ int uart_getchar (void) {
 
 /////////  HELPER FUNCTIONS /////////
 
+void uart_print_CR (void) {
+	uart_putchar('\n');
+	uart_putchar('\r');
+}
+
 void uart_print_string (char * string) {
 	while (*string) {
 		uart_putchar(*string++);
