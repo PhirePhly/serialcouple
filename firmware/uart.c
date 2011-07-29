@@ -5,13 +5,13 @@
 
 // Setup UART Xcver
 void uart_init(void) {
-	UCSRA = 0x00;
+	UCSRA = (1<<U2X);
 	UCSRB = (1<<RXEN) | (1<<TXEN);
 	UCSRC = (1<<UCSZ1) | (1<<UCSZ0);
-	// For speeed divider at 8MHz :
-	// 9600	baud	51
-	// 115k baud	3
-	UBRRL = 51;
+	// For speed divider at 8MHz :
+	// 9600	baud	51 / 103 (U2X) - 0.2% error
+	// 115k baud	8 (U2X) - 3.5% error
+	UBRRL = 8;
 }
 
 // Output a single character

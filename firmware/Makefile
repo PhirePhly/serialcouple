@@ -20,7 +20,7 @@ compile:	serialcouple.c spi.c uart.c
 # Needed to configure AVR hardware for proper operation
 # Only needs to be performed once per chip
 burn-fuse:
-	avr-dude $(AVRDUDE_FLAGS) -u -U lfuse:w:0xe4:m
+	avrdude $(AVRDUDE_FLAGS) -u -U lfuse:w:0xe8:m -U hfuse:w:0x9f:m
 
 clean:
 	@echo
