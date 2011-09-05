@@ -19,7 +19,7 @@ unsigned char spi_xfer(unsigned char d) {
 	for (i=0; i<8; i++) {
 		PORTB |= (1<<7);
 		PORTB &= ~(1<<7);
-		dn = (dn << 1) | !!(PINB & (1<<6));
+		dn = (dn << 1) | !!(PINB & (1<<5));
 	}
 	return dn;
 }
