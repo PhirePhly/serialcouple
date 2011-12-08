@@ -11,7 +11,7 @@ void uart_init(void) {
 	// For speed divider at 8MHz :
 	// 9600	baud	51 / 103 (U2X) - 0.2% error
 	// 115k baud	8 (U2X) - 3.5% error
-	UBRRL = 8;
+	UBRRL = 103;
 }
 
 // Output a single character
